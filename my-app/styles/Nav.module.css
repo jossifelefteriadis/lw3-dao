@@ -25,3 +25,54 @@ h1.title {
   list-style: none;
   cursor: pointer;
 }
+
+.link {
+	font-size: 1.2em;
+	font-weight: bold;
+	position: relative;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.link:hover,
+.link:focus {
+	color: #fff;
+}
+
+.link_page {
+	display: block;
+	color: #cecece;
+}
+
+.link_page:not(.link_faded)::before {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	width: 30px;
+	height: 2px;
+	margin: 5px 0 0 -15px;
+	background: #fff;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transform: scale3d(0, 1, 1);
+	transform: scale3d(0, 1, 1);
+}
+
+.link_page:hover:before {
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+}
+
+.link_faded {
+	color: #4f4f64;
+}
+
+.link_faded:hover,
+.link_faded:focus {
+	color: #5c5edc;
+}
+
+.link_page.link_faded {
+	font-size: 0.65em;
+}
