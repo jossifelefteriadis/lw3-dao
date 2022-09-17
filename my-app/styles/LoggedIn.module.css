@@ -1,0 +1,6 @@
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  background-color: #060208;
+}

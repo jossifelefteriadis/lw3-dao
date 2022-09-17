@@ -13,10 +13,10 @@ export default function Nav() {
       </Link>
       {address ? (
         <ul className={styles.navItems}>
-          <Link href="/Profile">
+          <Link href="/createproposal">
             <li>CREATE PROPOSAL</li>
           </Link>
-          <Link href="/Profile">
+          <Link href="/createproposal">
             <li>PREVIOUS PROPOSALS</li>
           </Link>
           <li>
