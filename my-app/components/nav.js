@@ -16,7 +16,7 @@ export default function Nav() {
           <Link href="/createproposal">
             <li>CREATE PROPOSAL</li>
           </Link>
-          <Link href="/createproposal">
+          <Link href="/previousproposals">
             <li>PREVIOUS PROPOSALS</li>
           </Link>
           <li>
