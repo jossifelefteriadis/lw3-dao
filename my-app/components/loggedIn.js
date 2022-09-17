@@ -6,7 +6,7 @@ export default function LoggedIn() {
       <section className={styles.main}>
         <p>when logged in</p>
         <h1>We should have a chakra ui table here with all the previous proposals.<br />
-        Similar to this table: https://thirdweb.com/contracts</h1>
+        The table below should look like thirdwebs instead: https://thirdweb.com/contracts</h1>
         <PreviousProposals />
       </section>
     )

@@ -32,6 +32,13 @@ export default function PreviousProposals() {
         <Td>@Haardik</Td>
         <Td>Check Here</Td>
       </Tr>
+      <Tr>
+        <Td>Should there be a thirdweb track?</Td>
+        <Td>Thirdweb is popular and maybe we should have a track about it</Td>
+        <Td>Junior Track</Td>
+        <Td>@Kacie</Td>
+        <Td>Check Here</Td>
+      </Tr>
     </Tbody>
   </Table>
 </TableContainer>
