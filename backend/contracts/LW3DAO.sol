@@ -1,4 +1,4 @@
-//SPDX-License_identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -6,6 +6,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract LW3DAO is Ownable {
 
   struct Proposal {
+  
+    // the person who launch the proposal 
+    address from;
+
     // proposal id
     uint256 id;
 
@@ -24,10 +28,13 @@ contract LW3DAO is Ownable {
     // title of the proposal
     string title;
 
+    // pdf link of the proposal
+    string pdfLink;
+
     // whether the proposal is executed or not
     bool executed;
 
-    // wheter a proposal exists or not
+    // whether a proposal exists or not
     bool exists;
 
     // whether the proposal has passed or not
@@ -73,9 +80,11 @@ contract LW3DAO is Ownable {
     );
 
   // funnction to create proposal
-  function createProposal(string memory _title, string memory _description) public returns(uint256) {
+  function createProposal(string memory _title, string memory _description, string memory _pdfLink) public returns(uint256) {
     Proposal storage newProposal = proposals[numProposals];
+    newProposal.from = msg.sender;
     newProposal.title = _title;
+    newProposal.pdfLink = _pdfLink;
     newProposal.description = _description;
     newProposal.id = numProposals;
     newProposal.exists = true;
@@ -126,5 +135,11 @@ contract LW3DAO is Ownable {
 
     emit proposalResult(_proposalId, proposal.passed);
 
+  }
+
+  // function to get the address of a passed proposal 
+  function getAddressFromPassedProposal(uint256 _proposalId) external view returns(address) {
+    require(proposals[_proposalId].passed, "The proposal is not passed");
+    return (proposals[_proposalId].from);
   }
 }
