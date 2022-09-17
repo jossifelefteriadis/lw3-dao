@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Proposal is Ownable {
+contract LW3DAO is Ownable {
 
   struct Proposal {
     // proposal id
@@ -20,6 +20,9 @@ contract Proposal is Ownable {
 
     // small detail about the proposal
     string description;
+
+    // title of the proposal
+    string title;
 
     // whether the proposal is executed or not
     bool executed;
@@ -46,9 +49,33 @@ contract Proposal is Ownable {
     NO
   }
 
+  // event for proposal creation
+  event proposalCreated(
+      uint256 id,
+      string title,
+      string description,
+      address proposer
+    );
+
+    // event to know when a new vote is casted
+    event newVote(
+        uint256 upvotes,
+        uint256 downvotes,
+        uint256 proposal,
+        address voter,
+        Vote vote
+    );
+
+    // event when a proposal is executed
+    event proposalResult(
+        uint256 id,
+        bool passed
+    );
+
   // funnction to create proposal
-  function createProposal(string memory _description) public returns(uint256) {
-    Proposal storage newProposals = proposals[numProposals];
+  function createProposal(string memory _title, string memory _description) public returns(uint256) {
+    Proposal storage newProposal = proposals[numProposals];
+    newProposal.title = _title;
     newProposal.description = _description;
     newProposal.id = numProposals;
     newProposal.exists = true;
@@ -56,7 +83,9 @@ contract Proposal is Ownable {
 
     numProposals++;
 
-    return numProposals -1;
+    emit proposalCreated(numProposals - 1, _title, _description, msg.sender);
+
+    return numProposals - 1;
   }
 
 
@@ -75,14 +104,16 @@ contract Proposal is Ownable {
     } else {
       proposal.downvotes += _votingPower;
     }
+
+    emit newVote(proposal.upvotes, proposal.downvotes, _proposalId, msg.sender, _vote);
   }
 
 
   // function to execute proposal if deadline has passed
   function executeProposal(uint256 _proposalId) public {
 
-    require(proposals[_proposalId].exists, "Proposal does not exists")
-    require(proposals[_proposalId] <= block.timestamp, "Deadline not exceeded");
+    require(proposals[_proposalId].exists, "Proposal does not exists");
+    require(proposals[_proposalId].deadline <= block.timestamp, "Deadline not exceeded");
     require(proposals[_proposalId].executed == false, "Proposal already executed");
 
     Proposal storage proposal = proposals[_proposalId];
@@ -92,6 +123,8 @@ contract Proposal is Ownable {
     }
 
     proposal.executed = true;
+
+    emit proposalResult(_proposalId, proposal.passed);
 
   }
 }
