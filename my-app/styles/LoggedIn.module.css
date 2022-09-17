@@ -1,0 +1,29 @@
+  /* .main {
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    min-height: 100vh;
+    margin-top: 1rem;
+  } */
+/* 
+.loggedInInfo {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loggedInInfoSteps {
+  padding: 0 2rem;
+  text-align: center;
+  width: 25rem;
+  height: 20rem;
+  border: 0.5px solid #9b9b9b;
+  border-radius: 7px;
+}
+
+.loggedInInfoSteps h2 {
+  color: #162C68;
+}
+
+.loggedInInfoSteps section {
+  text-align: left;
+} */

@@ -23,7 +23,7 @@ export default function Nav() {
           <Link href="https://learnweb3.io/">
             <li className={`${styles.link} ${styles.link_page} cursor-pointer text-lg mr-4`}>Main Site</li>
           </Link>
-          <Link href="/Profile">
+          <Link href="/proposals">
             <li className={`${styles.link} ${styles.link_page} cursor-pointer text-lg mr-6`}>PROPOSALs</li>
           </Link>
           <li>
