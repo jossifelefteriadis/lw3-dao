@@ -1,10 +1,31 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import styles from "../styles/Nav.module.css";
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+import Link from "next/link";
 
 
 export default function Nav() {
+  const address = useAddress();
+
     return (
-      <section>
+      <section className={styles.navContainer}>
+        <Link href="/">
+        <h1 className={styles.title}>LW3 DAO</h1>
+      </Link>
+      {address ? (
+        <ul className={styles.navItems}>
+          <Link href="/Profile">
+            <li>CREATE PROPOSAL</li>
+          </Link>
+          <Link href="/Profile">
+            <li>PREVIOUS PROPOSALS</li>
+          </Link>
+          <li>
         <ConnectWallet accentColor="#162C68" colorMode="dark" />
+          </li>
+        </ul>
+      ) : (
+        <ConnectWallet accentColor="#162C68" colorMode="dark" />
+      )}
       </section>
     )
   }

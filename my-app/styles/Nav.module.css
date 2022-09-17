@@ -1,0 +1,27 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  padding: 0 2rem;
+  background-color: #060208;
+}
+
+h1.title {
+  color: #E78DB3;
+  font-size: 3rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 45%;
+  margin-right: 0.2em;
+  list-style: none;
+  cursor: pointer;
+}

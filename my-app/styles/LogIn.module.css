@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  align-content: space-around;
+  min-height: 100vh;
+  margin-top: 5rem;
+  background-color: #060208;
+  /* background-color: blue; */
+}
+
+.loggedInInfo {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loggedInInfoSteps {
+  padding: 0 2rem;
+  text-align: center;
+  width: 25rem;
+  height: 20rem;
+  border: 0.5px solid #9b9b9b;
+  border-radius: 7px;
+}
+
+.loggedInInfoSteps h2 {
+  color: #162C68;
+}
+
+.loggedInInfoSteps section {
+  text-align: left;
+}
