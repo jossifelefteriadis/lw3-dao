@@ -1,12 +1,12 @@
 import Nav from "../components/nav";
-import CreateProposal from "../components/createproposal";
+import PreviousProposals from "../components/previousProposals";
 
 export default function createProfile() {
   return (
     <section>
       <Nav />
       <section>
-        <CreateProposal />
+        <PreviousProposals />
       </section>
     </section>
   );
