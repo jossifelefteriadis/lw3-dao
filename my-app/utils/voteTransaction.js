@@ -3,8 +3,10 @@ import { useContract, useContractWrite } from "@thirdweb-dev/sdk"
 export default function createProposalTransaction() {
   const { contract } = useContract("contract address")
   const {
-    mutate: createProposal,
+    mutate: voteOnProposals,
     isLoading,
     error
-  } = useContractWrite(contract, "voteOnProposal")
+  } = useContractWrite(contract, "voteOnProposals")
+
+  voteOnProposals([proposalId, votingPower, vote])
 }
