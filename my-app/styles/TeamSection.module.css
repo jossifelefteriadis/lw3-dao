@@ -1,11 +1,9 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* flex-direction: column; */
   justify-content: flex-start;
   align-content: center;
   align-items: center;
   min-height: 100vh;
   margin-top: 1rem;
-  /* background-color: #060208; */
 }

@@ -1,17 +1,10 @@
 import React from "react";
-// import styles from "../../styles/Footer.module.css";
 import Image from "next/image";
 
 export default function Footer() {
   return (
     <>
       <footer className=" bg-black flex items-center justify-center py-3 opacity-60">
-        {/* <div className={styles.team_members}>
-          <span>Dhruv Agarwal</span>
-          <span>Kushagra Sarathe</span>
-          <span>Nils Giebing</span>
-          <span>Aditya Gupta</span>
-        </div> */}
         <div className="flex items-center">
           {/* <Image src={logo} /> */}
 
