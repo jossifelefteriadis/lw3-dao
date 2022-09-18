@@ -26,6 +26,9 @@ export default function Nav() {
           <Link href="/proposals">
             <li className={`${styles.link} ${styles.link_page} cursor-pointer text-lg mr-6`}>PROPOSALs</li>
           </Link>
+          <Link href="/team">
+            <li className={`${styles.link} ${styles.link_page} cursor-pointer text-lg mr-6`}>Team</li>
+          </Link>
           <li>
         <ConnectWallet accentColor="#162C68" colorMode="dark" />
           </li>

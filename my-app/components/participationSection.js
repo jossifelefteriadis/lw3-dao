@@ -13,7 +13,7 @@ const cardsInfo = [
     description: "Do you have an idea that the community would love? Create a proposaland let your frens decide"
   },
   {
-    id: 2,
+    id: 3,
     title: "Vote On Proposal",
     description: "Once your wallet is connected, you will be able to see all the ongoing proposals and vote ( depending if you qualify ). You will also be able to see older proposals that are closed and their results"
   },
@@ -21,10 +21,10 @@ const cardsInfo = [
 
 export default function ParticipationInfo() {
   return (
-    <section className="flex flex-col items-center justify-center space-y-11">
+    <section className="flex flex-col items-center justify-center space-y-11 mt-6">
       <div>
         <h1 className=" font-semibold text-3xl">
-          Why LearnWeb3 DAO ?
+          How LearnWeb3 DAO works ?
         </h1>
       </div>
       <div className="flex items-center justify-between px-11 space-x-4">
