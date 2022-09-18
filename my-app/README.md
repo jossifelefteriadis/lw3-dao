@@ -1,5 +1,9 @@
 # LearnWeb3 DAO Whitepaper v1
 
+## What is LearnWeb3 ?
+LearnWeb3 is a free, high quality, holistic education platform to onboard you as a web3 developer. Click [here](https://learnweb3.io/) to join 40k+ builders and start your journey today.
+
+![](./img/lw3-logo-color.png)
 ## Introduction to LW3DAO
 LearnWeb3 DAO is a platform that **improves LW3 Community**.
 
@@ -35,24 +39,43 @@ The voting system is shown below.
 5. There are two identity in the system.
    - Proposal Creater: The one who create a proposal.
    - Voter: After a creation of a proposal, voters can vote with their voting power.
-6. After the deadline, system will execute and share the result to LW3DAO. 
+6. After the deadline, system will execute and show the result to LW3DAO. 
 #### Voting Power
 In this system, voters have 4 voting power and the power is depend on what LW3 NFT a member owns.
-- Freshman: 1 voting power
-- Sophomore: 2 voting power
-- Junior: 3 voting power
-- Senior: 4 voting power
+- **Freshman:** 1 voting power
+- **Sophomore:** 2 voting power
+- **Junior:** 3 voting power
+- **Senior:** 4 voting power
 
 #### Contributor NFT
-Moreover, we design a reward system for member to create a constructive proposal.
+Moreover, we design a **reward system** for member to create a constructive proposal.
 - Any Proposal Creater will get a Contributor NFT after his/her proposal is passed.
 
 ## Technologies used in LW3 DAO
-###  
-### NFTs
-### Smart Contracts
+
 ### Front-end
-### Back-end
-### Wallet Connection
+#### Next.js
+Next.js is a React Framework, which give us great experience when developing the whole website. By using this framework, we are able to divide pages into different components and develop seperately.
+
+![](/img/Next-logo.png)
+
+#### Wallet Connection
+For wallet connection, we use a 
+
+#### Moralis API
+We use Moralis API in `fetchData.js` in order to fetch the user's NFT metadata from LearnWeb3, which helps our system to distinguish the membership and determine voting power. 
+
+![](/img/Moralis%20API.png)
+
+### Polygon
+All of our contracts are deployed and tested on the Polygon testnet -- Mumbai so that our DApp can fetch the NFT metadata correctly and have interactions without paying gas fee. We intend to launch LW3DAO to the Polygon mainnet in the future.
+
+### Back-end 
+The smart contracts can be found in [/backend/contracts]().
+
+
+#### LW3DAO.sol
+In LW3DAO 
+#### ContributorNFT.sol
 
 ## Founders
