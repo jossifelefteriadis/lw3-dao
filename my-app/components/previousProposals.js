@@ -1,30 +1,21 @@
-import { useContract, useContractRead } from "@thirdweb-dev/react"
-import { useState } from "react";
-// import { JsonLiteral } from "@thirdweb-dev/sdk/dist/declarations/src/schema";
+import { useContract, useContractRead, useContractWrite } from "@thirdweb-dev/react"
+import { BigNumber } from "ethers";
+import { useEffect, useState } from "react";
 import styles from "../styles/PreviousProposals.module.css";
-import readNumOfProposals from "../utils/readNumOfProposals";
+
 
 export default function PreviousProposals() {
-  const [proposals, setProposals] = []
+  const [proposal, setProposal] = useState()
 
-  const [numProposals, setNumProposals] = useState()
+
   const { contract } = useContract("0xCF347Af8c2c437fB1483128A0ADc4424C1897393");
   const { data, isLoading, error } = useContractRead(
     contract,
     "proposals",
-    id,
+    2,
   );
+  console.log(data)
 
-  setNumProposals(readNumOfProposals())
-  for(var i = 0; i < numProposals; i++) {
-    setProposals(...proposals, data)
-  }
-
-  
-
-
-
-  // console.log(proposals)
     
   return (
     <section className={styles.main}>
@@ -33,11 +24,8 @@ export default function PreviousProposals() {
         Proposal
       </section>
       <section className="flex flex-col flex-wrap content-center w-4/6 mb-4">
-        {/* { //isLoading ? <h1>Loading PRoposals</h1>
-          proposals.map((proposal) => {
-            <Proposal proposal={proposal} />
-          })
-        } */}
+        {isLoading ? <h1>Loading Proposals</h1>
+          : <Proposal proposal={data}/>}
       </section>
     </section>
     </section>
@@ -46,11 +34,24 @@ export default function PreviousProposals() {
 
 
 const Proposal = ({proposal}) => {
+  const { contract } = useContract("0xCF347Af8c2c437fB1483128A0ADc4424C1897393");
+  const {
+    mutate: voteOnProposals,
+    isLoading,
+    error
+  } = useContractWrite(contract, "voteOnProposals")
 
   const [vote, setVote] = useState()
+
+  const handlebool = (e) => {
+    console.log(e.target.value)
+    setVote(e.target.value)
+  }
   
   const handleSubmit = (e) => {
     e.preventDefault()
+    let result = voteOnProposals([3, 4, "YES"])
+    console.log(result)
 
   }
 
@@ -58,17 +59,18 @@ const Proposal = ({proposal}) => {
     <section
       className={`my-8 p-12 w-2/3 h-54 flex flex-col py-11 border-l-4 border-t-4 border-r-2 border-b-2 rounded-lg`}
     >
-      <p className="pb-2">{proposal.title}</p>
+      <p className="pb-2">Title: {proposal.title}</p>
       <p className="pb-2">
-        {proposal.description}
+        Description: {proposal.description}
       </p>
-      <p className="pb-2">{proposal.pdfLink}</p>
+      <p className="pb-2">Link to the doc: {proposal.pdfLink}</p>
       <section className="form-check">
         <input
           className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
           type="radio"
           name="yes"
           id="yes"
+          onChange={handlebool}
         />
         <label className="form-check-label inline-block" htmlFor="yes">
           Yes
@@ -80,6 +82,7 @@ const Proposal = ({proposal}) => {
           type="radio"
           name="no"
           id="no"
+          onChange={handlebool}
         />
         <label className="form-check-label inline-block" htmlFor="no">
           No

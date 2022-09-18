@@ -34,7 +34,7 @@ contract LW3DAO is Ownable, KeeperCompatible {
   /* Chainlink Upkeep */
 
   /* Introduce NFT contracts */
-  address constant CONTRIBUTOR_NFT_ADDRESS = 0x2A48442bC6E94A9BB9C5982637fb63729Ae7eADF;
+  address constant CONTRIBUTOR_NFT_ADDRESS = 0x607dCF182812EB3770f40Eb2FC9188bFA3140864;
   ContributorNFTInterface NFT = ContributorNFTInterface(CONTRIBUTOR_NFT_ADDRESS);
   
   struct Proposal {
