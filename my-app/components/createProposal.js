@@ -70,8 +70,7 @@ export default function CreateProposal() {
             </section>
           </section>
         </form>
-        </section>
-        
       </section>
-    )
-  }
+    </section>
+  );
+}

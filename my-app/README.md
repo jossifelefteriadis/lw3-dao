@@ -5,7 +5,7 @@ LearnWeb3 is a free, high quality, holistic education platform to onboard you as
 
 ![](./img/lw3-logo-color.png)
 ## Introduction to LW3DAO
-LearnWeb3 DAO is a platform that **improves LW3 Community**.
+> LearnWeb3 DAO is a platform that **improves LW3 Community**.
 
 As the community grows, we found that there might be things remain improvable. Instead of holding the power in the minority, we are looking forward to bringing **the power of governance back to the community itself**. 
 
@@ -57,7 +57,7 @@ Moreover, we design a **reward system** for member to create a constructive prop
 #### Next.js
 Next.js is a React Framework, which give us great experience when developing the whole website. By using this framework, we are able to divide pages into different components and develop seperately.
 
-![](/img/Next-logo.png)
+![](./img/Next-logo.png)
 
 #### Wallet Connection
 For wallet connection, we use a 
@@ -65,7 +65,7 @@ For wallet connection, we use a
 #### Moralis API
 We use Moralis API in `fetchData.js` in order to fetch the user's NFT metadata from LearnWeb3, which helps our system to distinguish the membership and determine voting power. 
 
-![](/img/Moralis%20API.png)
+![](./img/Moralis%20API.png)
 
 ### Polygon
 All of our contracts are deployed and tested on the Polygon testnet -- Mumbai so that our DApp can fetch the NFT metadata correctly and have interactions without paying gas fee. We intend to launch LW3DAO to the Polygon mainnet in the future.
@@ -73,9 +73,56 @@ All of our contracts are deployed and tested on the Polygon testnet -- Mumbai so
 ### Back-end 
 The smart contracts can be found in [/backend/contracts]().
 
+### Chainlink Keeper System
+We use Chainlink Keeper system to **AUTOMATIZE** the execution of proposals. Chainlink Keeper system is a Decentralized Oracle Networks, which is held by numerous nodes to bring fairness and transparency.
 
-#### LW3DAO.sol
-In LW3DAO 
-#### ContributorNFT.sol
+To use the Keeper system, we should import `KeeperCompatibleInterface` to fetch `checkUpkeep()` and `performUpkeep()` in our contract. Keeper system would call the function `checkUpkeep()` to check whether `bool upkeepNeeded` is true or not. If it's true, Keeper system will call the `performUpkeep()` from our contract to calculate the result of the proposals.
+
+- [Upkeep Link](https://keepers.chain.link/mumbai/111794236083429278307824613352546607803698202613370602081375746981650395625347)
+
+### Smart  Contracts
+- **LW3DAO.sol:** The main contract which creates proposal and voting.
+- **ContributorNFT.sol:** The reward contract that stands for the Contributor NFT.
+
 
 ## Founders
+
+#### Aayush Deshmukh
+
+<img src="./img/aayush.jpeg" width="150" />
+
+##### Fullstack Developer
+
+
+
+---
+
+#### Jossif Elefteriadis
+
+<img src="./img/jossif.jpg" width ="150" />
+
+##### Fullstack Developer
+
+
+
+---
+
+#### Umar Khatab
+
+<img src="./img/umar.jpg" width ="150" />
+
+##### Fullstack Developer
+
+
+
+---
+
+#### Fu-Chuan Chung
+
+<img src="./img/fu.jpg" width ="150" />
+
+##### Smart Contract Developer
+
+Loves music and coding! 
+
+---
