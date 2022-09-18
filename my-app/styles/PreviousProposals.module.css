@@ -1,8 +1,8 @@
 .main {
-  display: flex;
+  /* display: flex; */
   /* flex-direction: column; */
-  justify-content: center;
-  align-content: space-around;
+  /* justify-content: center;
+  align-content: space-around; */
   min-height: 100vh;
   margin-top: 1rem;
   /* background-color: #060208; */
