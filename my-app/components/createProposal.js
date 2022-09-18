@@ -4,7 +4,7 @@ import styles from "../styles/CreateProposal.module.css";
 export default function CreateProposal() {
     return (
       <section className={`${styles.main} flex flex-col items-center mt-11`}>
-        <div className=" font-semibold text-2xl mb-8 ml-11 mt-11 first-letter:text-pink-500">Create A New Proposal</div>
+        <section className=" font-semibold text-2xl mb-8 mt-11 first-letter:text-pink-500">Create A New Proposal</section>
         <section className={`my-8 w-1/2 h-96 flex flex-col justify-center py-11 border-l-4 border-t-4 border-r-2 border-b-2 rounded-lg`}>
         <form className="w-full">
           <section className="flex flex-col flex-wrap content-center">
