@@ -34,7 +34,7 @@ export default function FetchData() {
   return (
     <section className="  flex flex-col flex-wrap items-center justify-center space-y-6">
       <h1 className=" text-3xl first-letter:text-pink-500">
-        NFT's Earned By User
+        NFT&apos;s Earned By User
       </h1>
       <section className=" flex md:flex-row flex-col flex-wrap items-center justify-center mx-8">
         {data.map((nft) => (

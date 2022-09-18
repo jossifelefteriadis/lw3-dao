@@ -1,5 +1,5 @@
 import Nav from "../components/nav";
-import PreviousProposals from "../components/previousProposals"
+import PreviousProposals from "../components/previousProposals";
 // import LogIn from "../components/logIn";
 import { useAddress } from "@thirdweb-dev/react";
 import Footer from "../components/footer";
@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <section>
       <Nav />
-      {address ? <PreviousProposals /> : <p>You don't have an nft</p>}
+      {address ? <PreviousProposals /> : <p>You don&apos;t have an nft</p>}
       <Footer />
     </section>
-  )
+  );
 }
