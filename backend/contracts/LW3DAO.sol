@@ -2,9 +2,41 @@
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@chainlink/contracts/src/v0.8/KeeperCompatible.sol";
+import "./ContributorNFT.sol";
 
-contract LW3DAO is Ownable {
 
+
+interface ContributorNFTInterface{
+  function safeMint(address to) external;
+}
+contract LW3DAO is Ownable, KeeperCompatible {
+  uint256 lastTimestamp;
+  constructor() {
+    lastTimestamp = block.timestamp;
+  }
+
+  /* Chainlink Upkeep */
+  // chainlink will call this function to check the deadline is over or not
+  function checkUpkeep(bytes calldata /*checkData*/) external view override returns (bool upkeepNeeded, bytes memory /*performData*/) {
+    upkeepNeeded = (block.timestamp > lastTimestamp);
+  }
+    
+  function performUpkeep(bytes calldata /* performData */) external override {
+    for (uint256 id = 0; id < numProposals; id++) {
+      if (proposals[id].executed == false) {
+          if (block.timestamp > proposals[id].deadline) {
+              executeProposal(id);
+          }
+      }
+    }
+  }
+  /* Chainlink Upkeep */
+
+  /* Introduce NFT contracts */
+  address constant CONTRIBUTOR_NFT_ADDRESS = 0x2A48442bC6E94A9BB9C5982637fb63729Ae7eADF;
+  ContributorNFTInterface NFT = ContributorNFTInterface(CONTRIBUTOR_NFT_ADDRESS);
+  
   struct Proposal {
   
     // the person who launch the proposal 
@@ -13,7 +45,9 @@ contract LW3DAO is Ownable {
     // proposal id
     uint256 id;
 
-    // deadline of the proposal
+    // create time
+    uint256 timestamp;
+
     uint256 deadline;
 
     // number of upvotes the proposal gets
@@ -62,23 +96,23 @@ contract LW3DAO is Ownable {
       string title,
       string description,
       address proposer
-    );
+  );
 
     // event to know when a new vote is casted
-    event newVote(
-        uint256 upvotes,
-        uint256 downvotes,
-        uint256 proposal,
-        address voter,
-        Vote vote
-    );
+  event newVote(
+    uint256 upvotes,
+    uint256 downvotes,
+    uint256 proposal,
+    address voter,
+    Vote vote
+  );
 
-    // event when a proposal is executed
-    event proposalResult(
-        uint256 id,
-        bool passed
-    );
-
+  // event when a proposal is executed
+  event proposalResult(
+    uint256 id,
+    bool passed
+  );
+  
   // funnction to create proposal
   function createProposal(string memory _title, string memory _description, string memory _pdfLink) public returns(uint256) {
     Proposal storage newProposal = proposals[numProposals];
@@ -88,7 +122,8 @@ contract LW3DAO is Ownable {
     newProposal.description = _description;
     newProposal.id = numProposals;
     newProposal.exists = true;
-    newProposal.deadline = block.timestamp + 5 minutes;
+    newProposal.timestamp = block.timestamp;
+    newProposal.deadline = block.timestamp + 1 minutes;
 
     numProposals++;
 
@@ -97,14 +132,12 @@ contract LW3DAO is Ownable {
     return numProposals - 1;
   }
 
-
   // function to vote on proposals based on the nfts the user own
   function voteOnProposals(uint256 _proposalId, uint256 _votingPower, Vote _vote) public {
-    
-    require(proposals[_proposalId].deadline > block.timestamp, "Deadline Exceeded");
     require(proposals[_proposalId].exists, "Proposal does not exists");
 
     Proposal storage proposal = proposals[_proposalId];
+    require(proposal.voteStatus[msg.sender] == false, "You have voted.");
 
     proposal.voteStatus[msg.sender] = true;
 
@@ -120,9 +153,8 @@ contract LW3DAO is Ownable {
 
   // function to execute proposal if deadline has passed
   function executeProposal(uint256 _proposalId) public {
-
+    require(proposals[_proposalId].deadline < block.timestamp, "Deadline is not over");
     require(proposals[_proposalId].exists, "Proposal does not exists");
-    require(proposals[_proposalId].deadline <= block.timestamp, "Deadline not exceeded");
     require(proposals[_proposalId].executed == false, "Proposal already executed");
 
     Proposal storage proposal = proposals[_proposalId];
@@ -132,7 +164,7 @@ contract LW3DAO is Ownable {
     }
 
     proposal.executed = true;
-
+    NFT.safeMint(proposals[_proposalId].from);
     emit proposalResult(_proposalId, proposal.passed);
 
   }

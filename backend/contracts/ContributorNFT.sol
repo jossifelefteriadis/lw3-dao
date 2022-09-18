@@ -6,25 +6,11 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-interface LW3DAOInterface{
-  function getAddressFromPassedProposal(uint256 _proposalId) external returns(address);
-}
-
 contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
     string baseURI;
-    
-    // to interact with the LW3DAO contract // the address should be replaced by a deployed LW3DAO
-    address constant LW3_DAO_ADDRESS = 0xd9145CCE52D386f254917e481eB44e9943F39138;
-    LW3DAOInterface lw3dao = LW3DAOInterface(LW3_DAO_ADDRESS);
-
-    // to check if the msg.sender is a contributor
-    modifier isContributor(uint256 _proposalId) {
-      require(lw3dao.getAddressFromPassedProposal(_proposalId) == msg.sender, "You are not the contributor.");
-      _;
-    }
 
     event Attest(address indexed to, uint256 indexed tokenId);
     event Revoke(address indexed to, uint256 indexed tokenId);
@@ -52,9 +38,8 @@ contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
         return baseURI;
     }
 
-
     // use isContributor to check if the proposal launched by msg.sender is passed or not 
-    function safeMint(address to, uint256 _proposalId) public isContributor(_proposalId) {
+    function safeMint(address to) public {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
