@@ -38,7 +38,10 @@ export default function FetchData() {
       </h1>
       <section className=" flex md:flex-row flex-col flex-wrap items-center justify-center mx-8">
         {data.map((nft) => (
-          <section className=" md:w-1/4 bg-purple-400 p-2 m-2 flex items-center justify-center">
+          <section
+            className=" md:w-1/4 bg-purple-400 p-2 m-2 flex items-center justify-center"
+            key={nft.name}
+          >
             <MediaRenderer src={`${nft.image}`} alt={nft.name} />
           </section>
         ))}
