@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LearnWeb3 DAO Whitepaper v1
 
-## Getting Started
+## Introduction to LW3DAO
+LearnWeb3 DAO is a platform that **improves LW3 Community**.
 
-First, run the development server:
+As the community grows, we found that there might be things remain improvable. Instead of holding the power in the minority, we are looking forward to bringing **the power of governance back to the community itself**. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+A LearnWeb3 learner can become a LW3DAO member, who has the right to **create a proposal** and **vote a proposal**. The voting system will **automately** calculate the voting result and share to the LW3DAO. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Who will get the membership of LW3 DAO?
+Anyone who owns at least **ONE** LearnWeb3 NFT (Freshman, Sophomore, Junior, Senior) is able to get the membership of LW3DAO.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## LearnWeb3 Improvement Proposals (LIP👄)
+### What is a proposal?
+Just like EIP (Ethereum Improvement Proposals), LIP are the proposals that improve LW3 Community. If a DAO member observe any issue/ problem in our community, he/ she can create a proposal by our system. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### What is the proposal format?
+Every Proposal must have a
+- **Title:** Title of the proposal.
+- **Description:** Simple description of the proposal. 
+- **PDF Link:** A pdf link of the proposal. More detail about the proposal in this file.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Every Proposal should be a
+- **YES/NO Question:** Our system now can only decide the issue is pass or not. 
 
-## Learn More
+Every Proposal has a 
+- **Deadline:** A period of time in which members can vote. After deadline, the system will execute to see the result.
+### Mechanism
+The voting system is shown below.
+![voting system](./img/systemic.png)
+1. First of all, connect the wallet to LW3DAO.
+2. System will detect whether the user has a LW3 NFT or not.
+3. If NO, we'll recommend to get one from LW3.
+4. If YES, the user is able to **CREATE** and **VOTE**.
+5. There are two identity in the system.
+   - Proposal Creater: The one who create a proposal.
+   - Voter: After a creation of a proposal, voters can vote with their voting power.
+6. After the deadline, system will execute and share the result to LW3DAO. 
+#### Voting Power
+In this system, voters have 4 voting power and the power is depend on what LW3 NFT a member owns.
+- Freshman: 1 voting power
+- Sophomore: 2 voting power
+- Junior: 3 voting power
+- Senior: 4 voting power
 
-To learn more about Next.js, take a look at the following resources:
+#### Contributor NFT
+Moreover, we design a reward system for member to create a constructive proposal.
+- Any Proposal Creater will get a Contributor NFT after his/her proposal is passed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies used in LW3 DAO
+###  
+### NFTs
+### Smart Contracts
+### Front-end
+### Back-end
+### Wallet Connection
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Founders
