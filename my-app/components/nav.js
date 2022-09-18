@@ -10,7 +10,7 @@ export default function Nav() {
     return (
       <section className={styles.navContainer}>
         <Link href="/">
-        <div className="flex items-center pt-4">
+        <div className="flex items-center pt-4 cursor-pointer">
           <Image src="/lw3-logo-white.png" height={50} width={250}></Image>
           <h1 className=" text-3xl pb-2 pt-1 font-semibold first-letter:text-pink-500">DAO</h1>
         </div>
