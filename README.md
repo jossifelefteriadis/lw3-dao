@@ -1,6 +1,6 @@
 # LearnWeb3 DAO Whitepaper v1
 
-![Go to Website](https://lw3-dao-flax.vercel.app/)
+[Go to Website](https://lw3-dao-flax.vercel.app/)
 
 ## What is LearnWeb3 ?
 LearnWeb3 is a free, high quality, holistic education platform to onboard you as a web3 developer. Click [here](https://learnweb3.io/) to join 40k+ builders and start your journey today.
