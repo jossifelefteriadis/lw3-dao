@@ -5,7 +5,7 @@ export default function Home() {
   const address = useState(true);
   return (
     <section>
-      {address ? <PreviousProposals /> : <p>You don't have an nft</p>}
+      {address ? <PreviousProposals /> : <p>You don&apos;t have an nft</p>}
     </section>
-  )
+  );
 }

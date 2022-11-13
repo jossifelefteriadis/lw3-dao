@@ -1,5 +1,7 @@
 # LearnWeb3 DAO Whitepaper v1
 
+[Go to Website](https://lw3-dao-flax.vercel.app/)
+
 ## What is LearnWeb3 ?
 LearnWeb3 is a free, high quality, holistic education platform to onboard you as a web3 developer. Click [here](https://learnweb3.io/) to join 40k+ builders and start your journey today.
 
@@ -60,7 +62,8 @@ Next.js is a React Framework, which give us great experience when developing the
 ![](./img/Next-logo.png)
 
 #### Wallet Connection
-For wallet connection, we use a 
+For wallet connection, we use thirdweb connect wallet feature.
+
 
 #### Moralis API
 We use Moralis API in `fetchData.js` in order to fetch the user's NFT metadata from LearnWeb3, which helps our system to distinguish the membership and determine voting power. 
@@ -72,6 +75,9 @@ All of our contracts are deployed and tested on the Polygon testnet -- Mumbai so
 
 ### Back-end 
 The smart contracts can be found in [/backend/contracts]().
+
+#### Thirdweb release feature
+We used thirdweb release featur to release and deploy the smart contracts
 
 ### Chainlink Keeper System
 We use Chainlink Keeper system to **AUTOMATIZE** the execution of proposals. Chainlink Keeper system is a Decentralized Oracle Networks, which is held by numerous nodes to bring fairness and transparency.
