@@ -1,22 +1,37 @@
 import React, { useState } from "react"
+import { useAccount, useContract, useProvider, useSigner } from "wagmi";
+import { LW3_DAO_CONTRACT_ABI, LW3_DAO_CONTRACT_ADDRESS } from "../constants";
+import createProposalTransaction from "../functionality/createProposalTransaction";
 import styles from "../styles/CreateProposal.module.css";
-import { useContractWrite, useContract } from "@thirdweb-dev/react"
-
-// import createProposalTransaction from "../utils/createProposalTransaction";
-// import FetchData from "./fetchData";
+import FetchNFT from "./fetchNFT";
 
 export default function CreateProposal() {
-  const [title, setTitle] = useState("Name")
 
+  const [title, setTitle] = useState("Name")
   const [desc, setDesc] = useState("Description")
   const [pdfLink, setPdfLink] =  useState("abc")
+  const { address, isConnected } = useAccount()
+  const provider = useProvider()
+  const { data: signer } = useSigner()
 
-  const { contract } = useContract("0xCF347Af8c2c437fB1483128A0ADc4424C1897393")
-  const {
-    mutate: createProposal,
-    isLoading,
-    error
-  } = useContractWrite(contract, "createProposal")
+  const Proposal_contract = useContract({
+    addressOrName: LW3_DAO_CONTRACT_ADDRESS,
+    contractInterface: LW3_DAO_CONTRACT_ABI,
+    signerOrProvider: signer || provider
+  })
+
+  const create = async () => {
+    try {
+      console.log("creating...")
+      const tx = await Proposal_contract.createProposal(title, desc, pdfLink)
+      await tx.wait()
+      console.log("Request Completed");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
@@ -33,11 +48,13 @@ export default function CreateProposal() {
     
   }
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault()
-    let result = createProposal([title, desc, pdfLink])
+    let result = await create()
     console.log(result)
   }
+
+  
 
     return (
       <section className={`${styles.main} flex flex-col items-center mt-11`}>
@@ -71,6 +88,7 @@ export default function CreateProposal() {
           </section>
         </form>
       </section>
+      <FetchNFT />
     </section>
   );
 }
